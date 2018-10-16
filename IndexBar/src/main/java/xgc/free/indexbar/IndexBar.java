@@ -22,8 +22,8 @@ import java.util.List;
 public class IndexBar extends View {
     private String[] DEFAULT_INDEX_ITEMS = {"A", "B", "C", "D", "E", "F", "G", "H",
             "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-    private int SHAPE_BG_RECT = 1;
-    private int SHAPE_BG_ROUND = 2;
+    public static final int SHAPE_BG_RECT = 1;
+    public static final int SHAPE_BG_ROUND = 2;
     private List<String> indexItems;
     private float itemHeight; //每个index的高度
     private int currentIndex = -1;

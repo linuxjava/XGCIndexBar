@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         mIndexBar.setTextColor(0xFF4A4A4A);
         mIndexBar.setBgColor(0x7F767676);
+        mIndexBar.setBgType(IndexBar.SHAPE_BG_ROUND);
         mIndexBar.setOverlayTextView((TextView) findViewById(R.id.text_char));
         mIndexBar.setIndexChangedListener(new IndexBar.IndexChangedListener() {
             @Override

@@ -1,12 +1,12 @@
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
-def siteUrl = "https://github.com/linuxjava/XGCPinnedDecoration"
-def gitUrl = "https://github.com/linuxjava/XGCPinnedDecoration.git"
-def desc = "PinnedHeaderDecoration for Android"//添加项目描述
-def repoStr = "XGCPinnedHeaderDecoration"//JCenter上仓储名
+def siteUrl = "https://github.com/linuxjava/XGCIndexBar"
+def gitUrl = "https://github.com/linuxjava/XGCIndexBar.git"
+def desc = "IndexBar for Android"//添加项目描述
+def repoStr = "XGCIndexBar"//JCenter上仓储名
 
-group = 'xgc.free.pinned.decoration'// library name
+group = 'xgc.free.indexbar'// library name
 version = '0.1'// version
 
 
