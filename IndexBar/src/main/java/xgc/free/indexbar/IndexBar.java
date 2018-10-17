@@ -41,6 +41,7 @@ public class IndexBar extends View {
     private int bgColor = 0xffffffff;//背景颜色
     private boolean isDrawBg = false;
     private int bgType = SHAPE_BG_RECT;
+    private RectF bgRectF;
 
     public IndexBar(Context context) {
         this(context, null);
@@ -136,23 +137,39 @@ public class IndexBar extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         if (isDrawBg && bgColor != 0xffffffff) {
+            if(bgRectF == null){
+                bgRectF = new RectF();
+            }
+            bgRectF.left = getPaddingLeft();
+            bgRectF.right = width - getPaddingRight();
+            bgRectF.top = getPaddingTop();
+            bgRectF.bottom = height - getPaddingTop();
             if (bgType == SHAPE_BG_RECT) {
-                canvas.drawRect(new RectF(0, 0, width, height), bgPaint);
+                canvas.drawRect(bgRectF, bgPaint);
             } else {
-                canvas.drawRoundRect(new RectF(0, 0, width, height), width / 2, width / 2, bgPaint);
+                canvas.drawRoundRect(bgRectF, width / 2, width / 2, bgPaint);
             }
         }
 
         String index;
         float x, y;
+        Paint tmpPaint;
+        Paint.FontMetrics fm;
+
         for (int i = 0; i < indexItems.size(); i++) {
             index = indexItems.get(i);
-            Paint.FontMetrics fm = paint.getFontMetrics();
-            x = (width - paint.measureText(index)) / 2;
+            if(i == currentIndex){
+                tmpPaint = touchPaint;
+            }else {
+                tmpPaint = paint;
+            }
+
+            fm = tmpPaint.getFontMetrics();
+            x = (width - tmpPaint.measureText(index)) / 2;
             //计算位置，确保文字绘制在每个矩形中间
             y = itemHeight * i + itemHeight / 2 + (-fm.top - fm.bottom) / 2;
             //test(canvas, i);
-            canvas.drawText(index, x, y, i == currentIndex ? touchPaint : paint);
+            canvas.drawText(index, x, y, tmpPaint);
         }
     }
 
@@ -175,7 +192,13 @@ public class IndexBar extends View {
     }
 
     @Override
+    public boolean performClick() {
+        return super.performClick();
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
+        performClick();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
