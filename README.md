@@ -1,5 +1,8 @@
 # XGCIndexBar
 
+- 支持矩形和圆角矩形效果；
+- 支持设置padding扩大触摸区域，确保滑动效果更好；
+
 ## APK下载
 [Download](https://github.com/linuxjava/XGCIndexBar/raw/master/apk/app-debug.apk)
 

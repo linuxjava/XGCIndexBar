@@ -27,5 +27,6 @@ dependencies {
     implementation 'xiao.free.decoration:SuperDecorationLib:0.2'
     implementation 'xgc.free.pinned.decoration:PinnedDecoration:0.1'
 
-    implementation project(path: ':IndexBar')
+    //implementation project(path: ':IndexBar')
+    implementation 'xgc.free.indexbar:IndexBar:0.2'
 }
