@@ -54,7 +54,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onIndexChanged(String index, int position) {
                 int listPos = indexMap.get(index);
-                mRecyclerView.getLayoutManager().scrollToPosition(listPos);
+                LinearLayoutManager mLayoutManager =
+                        (LinearLayoutManager) mRecyclerView.getLayoutManager();
+                mLayoutManager.scrollToPositionWithOffset(listPos, 0);
+                //mRecyclerView.getLayoutManager().scrollToPosition(listPos);
             }
         });
 
