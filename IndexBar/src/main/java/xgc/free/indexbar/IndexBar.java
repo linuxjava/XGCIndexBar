@@ -22,6 +22,7 @@ import java.util.List;
 public class IndexBar extends View {
     private String[] DEFAULT_INDEX_ITEMS = {"A", "B", "C", "D", "E", "F", "G", "H",
             "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+    public static final int SHAPE_BG_NONE = 0;
     public static final int SHAPE_BG_RECT = 1;
     public static final int SHAPE_BG_ROUND = 2;
     private List<String> indexItems;
@@ -40,7 +41,7 @@ public class IndexBar extends View {
     private IndexChangedListener indexChangedListener;
     private int bgColor = 0xffffffff;//背景颜色
     private boolean isDrawBg = false;
-    private int bgType = SHAPE_BG_RECT;
+    private int bgType = SHAPE_BG_NONE;
     private RectF bgRectF;
 
     public IndexBar(Context context) {
@@ -127,9 +128,12 @@ public class IndexBar extends View {
      * @param indexs
      */
     public void updateIndex(List<String> indexs) {
+        if(indexs == null){
+            return;
+        }
         currentIndex = -1;
         indexItems = indexs;
-
+        itemHeight = height * 1.0f / indexItems.size();
         invalidate();
     }
 
@@ -146,7 +150,7 @@ public class IndexBar extends View {
             bgRectF.bottom = height - getPaddingTop();
             if (bgType == SHAPE_BG_RECT) {
                 canvas.drawRect(bgRectF, bgPaint);
-            } else {
+            } else if (bgType == SHAPE_BG_ROUND){
                 canvas.drawRoundRect(bgRectF, width / 2, width / 2, bgPaint);
             }
         }
